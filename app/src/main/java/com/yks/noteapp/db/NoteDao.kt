@@ -6,11 +6,8 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao {
-    @Query("SELECT * FROM Note ORDER BY time asc")
-    fun getAllNotes(): Flow<List<Note>>
-
     @Query("SELECT * FROM Note ORDER BY time desc")
-    fun getAllNotesDesc(): Flow<List<Note>>
+    fun getAllNotes(): Flow<List<Note>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(note: Note)
