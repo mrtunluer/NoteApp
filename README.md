@@ -14,5 +14,3 @@ Simple note app I created using <a href="https://developer.android.com/training/
     - <a href="https://developer.android.com/training/data-storage/room" target="_blank">Room</a> - The Room persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
     - <a href="https://developer.android.com/guide/navigation">Jetpack Navigation</a> - Navigation refers to the interactions that allow users to navigate across, into, and back out from the different pieces of content within your app.
     - <a href="https://kotlinlang.org/docs/coroutines-overview.html">Coroutines</a> - A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously.
-
-  https://developer.android.com/training/data-storage/room
