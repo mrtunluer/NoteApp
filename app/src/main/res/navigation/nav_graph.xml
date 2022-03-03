@@ -27,7 +27,9 @@
         tools:layout="@layout/fragment_add_edit" >
         <action
             android:id="@+id/action_addEditFragment_to_notesFragment"
-            app:destination="@id/notesFragment" />
+            app:destination="@id/notesFragment"
+            app:popUpTo="@id/notesFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
 </navigation>

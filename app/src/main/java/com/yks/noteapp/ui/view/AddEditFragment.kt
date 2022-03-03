@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.yks.noteapp.R
 import com.yks.noteapp.databinding.FragmentAddEditBinding
@@ -65,8 +65,7 @@ class AddEditFragment : Fragment() {
     private fun updateDb(id: Int, title: String, desc: String, time: Long){
         viewModel.updateNote(id, title, desc, time).also {
             requireView().snackbar(getString(R.string.note_saved)).also {
-                Navigation.findNavController(requireView())
-                    .navigate(R.id.action_addEditFragment_to_notesFragment)
+                findNavController().navigate(R.id.action_addEditFragment_to_notesFragment)
             }
         }
     }
@@ -82,8 +81,7 @@ class AddEditFragment : Fragment() {
             else -> {
                 viewModel.insertNote(title, description, time).also {
                     requireView().snackbar(getString(R.string.note_saved)).also {
-                        Navigation.findNavController(requireView())
-                            .navigate(R.id.action_addEditFragment_to_notesFragment)
+                        findNavController().navigate(R.id.action_addEditFragment_to_notesFragment)
                     }
                 }
             }

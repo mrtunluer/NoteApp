@@ -1,5 +1,6 @@
 package com.yks.noteapp.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yks.noteapp.model.Note
@@ -21,14 +22,11 @@ class NoteViewModel @Inject constructor(private val noteRepo: NoteRepository):
     private val _state = MutableStateFlow<ViewState>(ViewState.Loading)
     val state = _state.asStateFlow()
 
-    init {
-        getAllNotes()
-    }
-
-    private fun getAllNotes() {
+    fun getAllNotes() {
         viewModelScope.launch {
             noteRepo.getAllNotes().distinctUntilChanged().collect { notes ->
                 if (!notes.isNullOrEmpty()) {
+                    Log.i("ilasikldkasd",",djşkasndşasd")
                     _state.value = ViewState.Success(notes)
                 } else {
                     _state.value = ViewState.Empty
@@ -36,7 +34,6 @@ class NoteViewModel @Inject constructor(private val noteRepo: NoteRepository):
             }
         }
     }
-
 
     fun insertNote(title: String, description: String, time: Long) {
         viewModelScope.launch {
