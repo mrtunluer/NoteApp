@@ -62,10 +62,20 @@ class AddEditFragment : Fragment() {
         binding.descTxt.setText(note.description)
     }
 
-    private fun updateDb(id: Int, title: String, desc: String, time: Long){
-        viewModel.updateNote(id, title, desc, time).also {
-            requireView().snackbar(getString(R.string.note_saved)).also {
-                findNavController().navigate(R.id.action_addEditFragment_to_notesFragment)
+    private fun updateDb(id: Int, title: String, description: String, time: Long){
+        when {
+            description.isEmpty() -> {
+                requireView().snackbar(getString(R.string.empty_desc))
+            }
+            title.isEmpty() -> {
+                requireView().snackbar(getString(R.string.empty_title))
+            }
+            else -> {
+                viewModel.updateNote(id, title, description, time).also {
+                    requireView().snackbar(getString(R.string.note_saved)).also {
+                        findNavController().navigate(R.id.action_addEditFragment_to_notesFragment)
+                    }
+                }
             }
         }
     }
