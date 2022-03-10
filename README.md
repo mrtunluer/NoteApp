@@ -1,6 +1,7 @@
 # Note App
 
-Simple note app I created using <a href="https://developer.android.com/training/data-storage/room" target="_blank">Room</a>.
+Note application developed based on <a href="https://developer.android.com/jetpack/guide?gclid=CjwKCAiAvaGRBhBlEiwAiY-yMI3zQ59HDLjYUAGeCFPZOjbDso5Mq01-f8gB2QK0JOGw-X3bf1i1ahoCSDMQAvD_BwE&gclsrc=aw.ds" target="_blank">Mvvm</a> architecture and using <a href="https://developer.android.com/training/data-storage/room" target="_blank">Room</a>.
+
 ## ScreenShots
 
 ![Apple iPhone 11 Pro Max Presentation](https://user-images.githubusercontent.com/75806927/155423400-1d9fdc34-319b-4c3c-9394-cd61e2bfb6f5.png)
