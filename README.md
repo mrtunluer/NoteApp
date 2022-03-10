@@ -9,6 +9,7 @@ Note application developed based on <a href="https://developer.android.com/jetpa
 ## Libraries Used
 
 - Android Architecture Components 
+    - <a href="https://developer.android.com/training/dependency-injection/hilt-android">Hilt</a> - Hilt is a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project.
     - <a href="https://developer.android.com/kotlin/flow" target="_blank">Flow</a> - In coroutines, a flow is a type that can emit multiple values sequentially, as opposed to suspend functions that return only a single value.
     - <a href="https://developer.android.com/kotlin/flow/stateflow-and-sharedflow" target="_blank">StateFlow</a> - StateFlow is a state-holder observable flow that emits the current and new state updates to its collectors.
     - <a href="https://developer.android.com/topic/libraries/architecture/viewmodel" target="_blank">ViewModel</a> - The ViewModel class is designed to store and manage UI-related data in a lifecycle conscious way.
