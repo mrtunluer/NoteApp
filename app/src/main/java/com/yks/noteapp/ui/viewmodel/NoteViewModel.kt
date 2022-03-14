@@ -26,7 +26,6 @@ class NoteViewModel @Inject constructor(private val noteRepo: NoteRepository):
         viewModelScope.launch {
             noteRepo.getAllNotes().distinctUntilChanged().collect { notes ->
                 if (!notes.isNullOrEmpty()) {
-                    Log.i("ilasikldkasd",",djşkasndşasd")
                     _state.value = ViewState.Success(notes)
                 } else {
                     _state.value = ViewState.Empty
