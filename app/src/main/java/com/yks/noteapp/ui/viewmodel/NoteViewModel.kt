@@ -1,6 +1,5 @@
 package com.yks.noteapp.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yks.noteapp.model.Note
