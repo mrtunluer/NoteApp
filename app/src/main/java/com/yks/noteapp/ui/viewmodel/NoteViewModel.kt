@@ -6,6 +6,7 @@ import com.yks.noteapp.model.Note
 import com.yks.noteapp.repo.NoteRepository
 import com.yks.noteapp.utils.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
@@ -15,16 +16,16 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class NoteViewModel @Inject constructor(private val noteRepo: NoteRepository):
+class NoteViewModel @Inject constructor(private val noteRepo: NoteRepository) :
     ViewModel() {
 
     private val _state = MutableStateFlow<ViewState>(ViewState.Loading)
     val state = _state.asStateFlow()
 
     fun getAllNotes() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             noteRepo.getAllNotes().distinctUntilChanged().collect { notes ->
-                if (!notes.isNullOrEmpty()) {
+                if (notes.isNotEmpty()) {
                     _state.value = ViewState.Success(notes)
                 } else {
                     _state.value = ViewState.Empty
@@ -34,7 +35,7 @@ class NoteViewModel @Inject constructor(private val noteRepo: NoteRepository):
     }
 
     fun insertNote(title: String, description: String, time: Long) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val note = Note(
                 title = title,
                 description = description,
@@ -45,7 +46,7 @@ class NoteViewModel @Inject constructor(private val noteRepo: NoteRepository):
     }
 
     fun updateNote(id: Int, title: String, description: String, time: Long) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val note = Note(
                 id = id,
                 title = title,
@@ -57,7 +58,9 @@ class NoteViewModel @Inject constructor(private val noteRepo: NoteRepository):
     }
 
     fun deleteNote(id: Int) {
-        viewModelScope.launch { noteRepo.deleteNote(id) }
+        viewModelScope.launch(Dispatchers.IO) {
+            noteRepo.deleteNote(id)
+        }
     }
 
 }
